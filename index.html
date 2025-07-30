@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>محمد حسین کریمی | Product Designer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Vazirmatn',sans-serif;
+      overflow:hidden;
+      color:white;
+      position:relative;
+      background:#0f172a;
+    }
+    
+    #bg-video{
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      z-index:-2;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      background:
+       
+      animation:bgMove 20s infinite linear;
+      z-index:-1;
+    }
+    @keyframes bgMove{
+      0%{background-position:0 0,0 0,0 0;}
+      50%{background-position:50px 50px,-50px 30px,30px -50px;}
+      100%{background-position:0 0,0 0,0 0;}
+    }
+
+    .main {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      height: 80vh;
+      gap: 0;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .sidebar {
+      width: 280px;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 30px 0 0 30px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 60px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      gap: 30px;
+      flex-shrink: 0;
+
+
+    }
+
+    .sidebar .avatar img {
+      width: 220px;
+      height: 220px;
+      border-radius: 30px;
+      border: 3px solid #facc15;
+      object-fit: cover;
+      box-shadow: 0 0 20px #facc15;
+      user-select: none;
+
+    }
+
+    .contact-icons {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact-icons a {
+      color: #facc15;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    .contact-icons a:hover {
+      transform: scale(1.4);
+      text-shadow: 0 0 10px #facc15;
+    }
+
+    .card {
+      flex-grow: 1;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      padding: 40px 60px;
+      border-radius: 0 30px 30px 0;
+      box-shadow: 0 0 60px rgba(0,0,0,0.4);
+      max-width: 750px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+      direction: rtl;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:none;}
+    }
+
+    nav {
+      width: 60px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 30px 0 0 30px;
+      z-index: 10;
+    }
+    nav a {
+      color: #888;
+      text-decoration: none;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #facc15;
+      transform: scale(1.2);
+      text-shadow: 0 0 10px #facc15;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      color: #fff;
+      user-select: none;
+    }
+    h2 {
+      color: #facc15;
+      margin-bottom: 15px;
+      font-weight: 400;
+      user-select: none;
+    }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+      padding: 0 10px;
+      text-align: right;
+      animation: fadeIn 2s ease;
+    }
+    p {
+      color: #ddd;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      user-select: text;
+    }
+
+    .section {
+      display: none;
+      margin-top: 15px;
+    }
+    .section.active {
+      display: block;
+      animation: fadeIn 0.8s ease;
+    }
+    .section h3 {
+      color: #facc15;
+      margin: 20px 0 10px;
+      font-size: 1.2rem;
+      border-bottom: 1px solid rgba(250,204,21,0.4);
+      padding-bottom: 5px;
+      user-select: none;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: rgba(250,204,21,0.2);
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 0.75rem;
+      color: #fff;
+      user-select: none;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .timeline-item {
+      background: rgba(255,255,255,0.08);
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: #fff;
+      user-select: text;
+    }
+
+    /* انیمیشن لوگوها */
+    .clients {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .client {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #ccc;
+      font-size: 0.75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: clientFade 1s forwards;
+    }
+    .client img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-bottom: 3px;
+      filter: brightness(0) invert(1) opacity(0.8);
+      transition: 0.3s;
+    }
+    .client img:hover {
+      transform: scale(1.2);
+      filter: brightness(1) invert(0) opacity(1);
+    }
+    @keyframes clientFade {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .client:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    .client:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    .client:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    .client:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .social a {
+      color: #facc15;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .social a:hover {
+      transform: scale(1.3);
+      text-shadow: 0 0 10px #facc15;
+    }
+    footer {
+      text-align: center;
+      margin-top: 10px;
+      color: #777;
+      font-size: 0.7rem;
+      user-select: none;
+    }
+
+    /* استایل توضیح پروژه - بدون لینک، فقط هاور بنفش */
+    .project-link {
+      color: #facc15;
+      font-weight: 600;
+      cursor: default;
+      display: inline-block;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .project-link:hover {
+      color: #9f7aea; /* رنگ بنفش */
+    }
+    .dropdown-desc {
+      color: #ccc;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- ویدیو بک‌گراند -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="bg.mp4" type="video/mp4" />
+  </video>
+
+  <div class="main">
+    <!-- بخش عکس و آیکون تماس سمت راست -->
+    <aside class="sidebar" aria-label="تصویر و اطلاعات تماس">
+      <div class="avatar">
+        <img src="avatar.jpg" alt="عکس محمد حسین کریمی" />
+ <div style=" text-align: center;">
+<h2>محمد حسین کریمی</h2>
+      <h3>Product Designer</h3>
+
+      <br>
+                   <p>Email: hosseink630@gmail.com</p>
+          <p>Phone: 09153343277</p>
+         
+    
+</div>
+      </div>
+      <div class="contact-icons" aria-label="آیکون‌های تماس">
+        <a href="https://linkedin.com/in/m-hossein-karimi" target="_blank" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+        <a href="https://t.me/Mooka_pv" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+ <a href="https://wa.me/+989153343277" target="_blank" aria-label="واتسپ"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:hosseink630@gmail.com" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
+
+      </div>
+    </aside>
+
+    <!-- کارت محتوا سمت چپ -->
+    <section class="card" role="main" aria-label="اطلاعات پروفایل">
+      <nav>
+        <a href="#about" class="active"><i class="fas fa-user"></i></a>
+        <a href="#resume"><i class="fas fa-briefcase"></i></a>
+        <a href="#portfolio"><i class="fas fa-image"></i></a>
+      
+      </nav>
+
+     
+      <div class="content">
+        <!-- درباره من -->
+        <div id="about" class="section active">
+          <h3>درباره من</h3>
+          <p>  سـلام من محمدحسین کریمی هستم با تجربه‌های موفق و ناموفق توی زمینه‌های مختلف از دیزاین تا فیلم و عکس. پر و بال دادن و خیال پردازی درباره برندها از تفریحاتمه. با شرکت ها و سازمان های زیادی از جمله منطقه ویژه اقتصادی و استانداری موسسه سینمایی مهربان فیلم و حتی پیج های فروشگاهی و خدماتی مختلف نظیر فارسی هاب همکاری داشتم الانم به صورت فری لنس عکاسی و فیلمبرداری تبلیغاتی انجام میدم</p>
+          <p>سن: ۲۶ | شهر: بیرجند</p>
+          <p>شغل فعلی: روابط عمومی سازمان مدیریت و برنامه‌ریزی خراسان جنوبی</p>
+          <p>نوع همکاری: ریموت و حضوری</p>
+          <p>تفریحات: سنگ‌نوردی، سفر، ساز، عکاسی</p>
+          <p>علاقه‌مند به طراحی محصول و خلق ایده‌های جدید</p>
+          <div class="tag-list">
+            <div class="tag">Photoshop</div>
+            <div class="tag">Illustrator</div>
+            <div class="tag">InDesign</div>
+            <div class="tag">Figma</div>
+            <div class="tag">Premiere</div>
+            <div class="tag">After Effects</div>
+            <div class="tag">Photography</div>
+            <div class="tag">Videography</div>
+          </div>
+        </div>
+
+        <!-- رزومه -->
+        <div id="resume" class="section">
+          <h3>تحصیلات</h3>
+          <div class="timeline"><div class="timeline-item">مهندسی کامپیوتر - دانشگاه بیرجند</div></div>
+          <h3>سوابق کاری</h3>
+          <div class="timeline">
+            <div class="timeline-item">کارشناس روابط عمومی | سازمان مدیریت و برنامه‌ریزی خراسان جنوبی (۱۴۰۲ تاکنون)</div>
+            <div class="timeline-item">فریلنسر طراحی، تدوین و عکاسی (۱۴۰۰ تاکنون)</div>
+            <div class="timeline-item">مدیر و طراح | شرکت تبلیغاتی اینستاد (۱۳۹۹-۱۴۰۱)</div>
+            <div class="timeline-item">ادیتور ویدیو | موسسه سینمایی مهربان فیلم (۱۴۰۱)</div>
+          </div>
+          <h3>مشتریان</h3>
+          <div class="clients">
+            <div class="client"><img src="client1.png" alt="client1" /><span>منطقه ویژه اقتصادی بیرجند</span></div>
+            <div class="client"><img src="client2.png" alt="client2" /><span>دکتر گلدانی</span></div>
+            <div class="client"><img src="client3.png" alt="client3" /><span>فارسی هاب</span></div>
+            <div class="client"><img src="client4.png" alt="client4" /><span>مهربان فیلم</span></div>
+          </div>
+        </div>
+
+        <!-- نمونه‌کار -->
+        <div id="portfolio" class="section">
+          <h3>نمونه‌کارها</h3>
+          <div class="timeline">
+            <div class="timeline-item project-item">
+              <span class="project-link" tabindex="0">
+              <a href="https://www.figma.com/proto/5gjwUuHBeYltnoHY2LVQEN/%DA%A9%DB%8C%D8%B3-%D8%A7%D8%B3%D8%AA%D8%A7%D8%AF%DB%8C?page-id=0%3A1&type=design&node-id=1-2&viewport=405%2C292%2C0.45&t=4gbCL1GmiGbYLsSp-1&scaling=min-zoom&starting-point-node-id=1%3A2">  محصول توریست</a>
+              </span>
+              <div class="dropdown-desc">
+                ایده پردازی و طراحی وب اپلیکیشن توریست تا مرحله MVP برای برنامه ریزی سفرهای ارزان و پیداکردن همسفر و لیست سفرهای جذاب و تورها
+              </div>
+            </div>
+
+            <div class="timeline-item project-item">
+              <span  class="project-link" tabindex="0"> 
+                <a href="https://karafarak.ir/">  طراحی وبسایت Karafarak.ir</a>
+              </span>
+              <div class="dropdown-desc">
+                طراحی لندینگ و سکشن‌های مختلف اسلایدرها و آموزش‌ها و ویدیوگرافی سایت کارآفرک
+              </div>
+            </div>
+          </div>
+        </div>
+
+     
+      </div>
+
+      <footer>© 2025 محمد حسین کریمی</footer>
+    </section>
+  </div>
+
+  <script>
+    const navLinks=document.querySelectorAll('nav a');
+    const sections=document.querySelectorAll('.section');
+    navLinks.forEach((link,idx)=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        navLinks.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+        sections.forEach(sec=>sec.classList.remove('active'));
+        sections[idx].classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
